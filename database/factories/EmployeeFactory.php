@@ -23,7 +23,7 @@ class EmployeeFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => 'testPass', // password
-            'company' => \App\Models\Company::all()->random()->id,
+            'company_id' => \App\Models\Company::all()->random()->id,
             'address' => fake()->streetAddress(),
             'phone' => fake()->phoneNumber(),
             'birthdate' => fake()->dateTimeBetween($startDate = '-50 years', $endDate = '-20 years', $timezone = null), // password
