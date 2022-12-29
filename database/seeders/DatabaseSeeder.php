@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        User::factory()->count(10)->create();
-        Company::factory()->count(30)->create();
-        Employee::factory()->count(230)->create();
-        Invitation::factory()->count(230)->create();
-        Audit::factory()->count(230)->create();
+        \App\Models\User::factory()->count(10)->create();
+        \App\Models\Company::factory()->count(30)->create();
+        \App\Models\Employee::factory()->count(230)->create();
+        \App\Models\Invitation::factory()->count(230)->create();
+        \App\Models\Audit::factory()->count(230)->create();
 
     }
 }
