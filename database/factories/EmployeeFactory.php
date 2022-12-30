@@ -26,7 +26,7 @@ class EmployeeFactory extends Factory
             'company_id' => \App\Models\Company::all()->random()->id,
             'address' => fake()->streetAddress(),
             'phone' => fake()->phoneNumber(),
-            'birthdate' => fake()->dateTimeBetween($startDate = '-50 years', $endDate = '-20 years', $timezone = null), // password
+            'birthdate' => fake()->dateTimeBetween($startDate = '-59 years', $endDate = '-20 years', $timezone = null)->format('Y-m-d'), // password
             'token_expiry_date' => Carbon::now(),
             'is_verified' => true
         ];
