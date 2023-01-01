@@ -19,29 +19,31 @@ use \App\Http\Controllers\InvitationController;
 
 //Admin
 Route::get('/', [UserController::class, 'index']);
-Route::post('/users', [UserController::class, 'createUser']);
+Route::post('/users', [UserController::class, 'createUser']);//Done
+Route::get('/users', [UserController::class, 'getAllUsers']);//Done
 
-Route::get('/companies/{id}', [CompanyController::class, 'getCompany']);
-Route::get('/companies', [CompanyController::class, 'getAllCompanies']);
-Route::post('/companies', [CompanyController::class, 'createCompany']);
-Route::put('/companies/{id}', [CompanyController::class, 'updateCompany']);
-Route::delete('/companies/{id}', [CompanyController::class, 'deleteCompany']);
+Route::get('/companies/{id}', [CompanyController::class, 'getCompany']); //Done 
+Route::get('/companies', [CompanyController::class, 'getAllCompanies']); //Done
+Route::post('/company', [CompanyController::class, 'createCompany']);//Done
+Route::put('/company', [CompanyController::class, 'updateCompany']);//Done
+Route::delete('/company/{id}', [CompanyController::class, 'deleteCompany']);//Done
 
-Route::post('/employees', [EmployeeController::class, 'inviteEmployee']);
-Route::get('/employees/{id}', [EmployeeController::class, 'getEmployee']);
-Route::get('/employees', [EmployeeController::class, 'getEmployees']);
+Route::get('/employees/{id}', [EmployeeController::class, 'getEmployee']);//Done
+Route::get('/employees', [EmployeeController::class, 'getAllEmployees']);//Done
 
-Route::get('/invitations', [InvitationController::class, 'getInvitations']);
-Route::put('/invitations/{id}', [InvitationController::class, 'updateInvitationStatus']);
-Route::post('/invitations', [InvitationController::class, 'sendInvitation']);
+Route::get('/invitations', [InvitationController::class, 'getAllInvitations']);//Done
+Route::put('/invitation/{id}', [InvitationController::class, 'cancelInvitation']);//Done
+Route::post('/invitation', [InvitationController::class, 'sendInvitation']);//Done
+
 
 
 //Employee
-Route::put('/employees/registration/{token}', [EmployeeController::class, 'setEmployeePassword']);
-Route::put('/employees/registration/details/{token}', [EmployeeController::class, 'setEmployeeDetails']);
+Route::get('/employee/registration/{id}/{token}', [EmployeeController::class, 'updatePasswordPage']);//Done
+Route::put('/employee', [EmployeeController::class, 'updateEmployeePassword']);//Done
+Route::put('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetails']);//Done
 
-Route::get('/employees/{id}', [EmployeeController::class, 'viewEmployee']);
-Route::put('/employees/{id}', [EmployeeController::class, 'updateEmployee']);
+// Route::get('/employees/{id}', [EmployeeController::class, 'viewEmployee']);
+// Route::put('/employees/{id}', [EmployeeController::class, 'updateEmployee']);
 
-Route::get('/company/{id}', [CompanyController::class, 'viewCompany']);
-Route::get('/company/{id}/employees', [CompanyController::class, 'viewCompany']);
+// Route::get('/company/{id}', [CompanyController::class, 'viewCompany']); 
+Route::get('/company/employees/{id}', [CompanyController::class, 'viewEmployeeCompany']);//Done
