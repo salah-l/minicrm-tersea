@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('company_id');
             $table->string('name');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->date('birthdate')->nullable();
+            $table->string('token')->nullable();
             $table->date('token_expiry_date')->default(Carbon::now()->addMonth());
             $table->boolean('is_verified')->default(false);
             $table->timestamps();

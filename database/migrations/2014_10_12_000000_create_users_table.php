@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->tinyInteger('role')->default(1);
+            $table->boolean('default_password')->default(true);
             $table->timestamps();
         });
     }
