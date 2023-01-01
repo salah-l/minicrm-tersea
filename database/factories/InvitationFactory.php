@@ -18,7 +18,8 @@ class InvitationFactory extends Factory
     {
 
         //getting a random employee_id, however every employee get one and only one invitation.
-        $employee = \App\Models\Employee::whereNotIn('id', \App\Models\Invitation::pluck('employee_id')->all())
+        $invited_employees = \App\Models\Invitation::pluck('employee_id');
+        $employee = \App\Models\Employee::whereNotIn('id', $invited_employees)
                                             ->get()
                                             ->random();                                 
         return [
