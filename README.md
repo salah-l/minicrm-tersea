@@ -1,66 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Minicrm
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Projet Minicrm
+[![Build Status](https://badgen.net/badge/From/Louizy/blue?icon=bitcoin-lightning)](https://badgen.net/badge/From/Louizy/blue?icon=bitcoin-lightning)
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Minicrm utilise plusieurs projet open-source:
 
-## Learning Laravel
+- [Laravel](https://laravel.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [jQuery](https://jquery.com/)
+- [Datatable](https://datatables.net/)
+- [Font-awesome](https://fontawesome.com/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Pour installer Minicrm:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Cloner le repository: `https://github.com/salah-l/minicrm-tersea`
+2. Naviguer au dossier du projet: `cd minicrm-tersea`
+3. Executer: `composer install`
+4. Installer les modules npm: `npm install`
+5. Créer le fichier .env: `copy .env.example .env`
+6. Modifier DB_CONNECTION et MAIL_MAILER dans le fichier .env: 
+```
+DB_CONNECTION=sqlite
+.
+.
+MAIL_MAILER=log
+```
+7. Generer la clès de l'application: `php artisan key:generate`
+8. Créer les tables dans la database: `php artisan migrate` puis enter `yes`
+9. Génerer dummy data avec: `php artisan db:seed`
+10. Dans un nouveau terminal, lancer le serveur laravel: `php artisan serve`
+11. Dans un autre terminal, lancer Vite: `npm run dev`
+12. Dans votre navigateur, naviguer au `http://localhost:8000`, et voila
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Pour vous connecter voici des logins predefinis:
+1.Pour administrateur
+```
+email: admin@minicrm.com
+Mot de passe: 123456789
+```
 
-### Premium Partners
+```
+email: karim@minicrm.com
+Mot de passe: 123456789
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+2.Pour Employé
+```
+email: employee@company.com
+Mot de passe: 123456789
+```
 
-## Contributing
+```
+email: nasser.r@company.com
+Mot de passe: 123456789
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Pour l'espace administrateur, quand vous envoyé une invitation a un employe l'email envoye sera delivre au `./storage/laravel.log`
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<img src="http://salah.louizy.com/images/louizy-logo.png" width="100"/>
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
