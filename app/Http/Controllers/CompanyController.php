@@ -12,20 +12,30 @@ class CompanyController extends Controller
 
     function getCompany($id){
 
+
+
+
         if(Company::whereId($id)->exists()){
-            $company = Company::whereId($id)->first();
-            return [
-                'company_name' => $company->name,
-                'company_description' => $company->description,
-            ];
+            $section_title = "Détails de la Sociéte";
+            return view('company', ['company' => Company::find($id), 'sectionTitle' => $section_title]);
         }
 
         return ['message' => 'No Such Company'];
         
     }
 
+
     function getAllCompanies(){
-        return Company::all();
+        return ['data' => Company::all()];
+    }
+
+    function viewCreateCompanyPage(){
+
+        return view('createCompany');
+    }
+
+    function viewAllCompanies(){
+        return view('companies', ['message' => null, 'alert' => null]);
     }
 
     function viewEmployeeCompany($id){
@@ -45,62 +55,97 @@ class CompanyController extends Controller
 
     function createCompany(Request $request){
 
-        //Needs Data Validation
-        $messsage = 'Company Created';
-        Company::create([
-                'name' => $request->name,
-                'description'=> $request->description
-            ]);
+        
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'max:1000',
+        ]);
 
-        return ['message' => $messsage];
+
+        $message = 'La Société a été créé avec succès!';
+        $alert = 'success';
+
+        try{
+            $company = Company::where('name', '=', $request->name)->exists();
+            if($company){
+                $message = 'La Société est déja créé!';
+                $alert = 'danger';
+            }else{
+                Company::create([
+                    'name' => $request->name,
+                    'description'=> $request->description
+                ]);
+            }
+
+
+        }catch(\Exception $e){
+            $message = $e->getMessage();
+            $alert = 'danger';
+        }
+
+
+        return view('alert', ['message' => $message, 'alert' => $alert]);    
+
 
     }
 
 
     function updateCompany(Request $request){
         
-        //Needs Data Validation
-        $messsage = 'Something went wrong';
-        $company = Company::find($request->id);
-        if($company){
-            $company->update([
-                'name' => $request->name,
-                'description' => $request->description
-            ]);
+        
+        $request->validate([
+            'description' => 'max:1000',
+        ]);
+
+        $message = 'La Société a été modifié avec succès!';
+        $alert = 'success';
+
+        try{
+            $company = Company::find($request->id);
+
+            if($company){
+                    $company->update([
+                        'description' => $request->description
+                    ]);
+
+                
+            }
+
+        }catch(\Exception $e){
             
-            $updated_company = Company::find($request->id)->fresh();
-            $messsage = [
-                'updatedCompany' => $updated_company,
-            ];
+            $message = $e->getMessage();
+            $alert = 'danger';
         }
 
-        return ['message' => $messsage];
+
+        return view('alert', ['message' => $message, 'alert' => $alert]);
 
     }
 
 
     function deleteCompany($id){
 
-        $messsage = '404 Error';
+        $message = 'La Société a été supprimé avec succès!';
+        $alert = 'success';
         try{
 
             $company = Company::find($id);
             if($company){
                 $company->delete();
-                $message = 'Company Deleted!';
             }
 
 
         }catch(\Exception $e){
 
-            if($e->getCode() == 23000){
-                $message = "Can't delete company with employees in it!";
-            }
             $message = $e->getMessage();
-
+            if($e->getCode() == 23000){
+                $message = "La Société n'a pas été supprimé car il y'en a des Employés!";
+                $alert = 'danger';
+            }
         }
 
-        return ['message' => $messsage];
+        return view('alert', ['message' => $message, 'alert' => $alert]);
+
         
     }
 
