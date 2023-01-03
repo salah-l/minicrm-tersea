@@ -18,12 +18,13 @@ class DatabaseSeeder extends Seeder
     {
 
 
-
+        //Generating dummy data for user, companies, employees, invitations
         \App\Models\User::factory()->count(10)->create();
         \App\Models\Company::factory()->count(30)->create();
         \App\Models\Employee::factory()->count(100)->create();
         \App\Models\Invitation::factory()->count(100)->create();
 
+        //Generating dummy data for Audit while respecting previous data
         $users_ids = \App\Models\Invitation::pluck('user_id');
         $companies_ids = \App\Models\Invitation::pluck('company_id');
         $employees_ids = \App\Models\Invitation::pluck('employee_id');
@@ -47,8 +48,36 @@ class DatabaseSeeder extends Seeder
             $data[] = $event3;
         }
 
-        
         \App\Models\Audit::insert($data);
+        
+
+
+        //Updating User and Employee data for easy login
+        \App\Models\User::find(1)->update([
+            'name' => 'Admin Test',
+            'email' => 'admin@minicrm.com',
+            'password' => \Hash::make('123456789')
+        ]);
+
+        \App\Models\User::find(2)->update([
+            'name' => 'Karim Ghilal',
+            'email' => 'karim@minicrm.com',
+            'password' => \Hash::make('123456789')
+        ]);
+
+
+        \App\Models\Employee::find(1)->update([
+            'name' => 'Employé Test',
+            'email' => 'employee@company.com',
+            'password' => \Hash::make('123456789')
+        ]);
+
+        \App\Models\Employee::find(2)->update([
+            'name' => 'Rachid Nasser',
+            'email' => 'nasser.r@company.com',
+            'password' => \Hash::make('123456789')
+        ]);
+
 
     }
 }
