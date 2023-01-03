@@ -21,11 +21,26 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        // $guards_routes = [
+        //     'user' => '/',
+        //     'employee' => '/employee'
+        // ];
+
+        if (auth()->guard('user')->check()) {
+            return redirect('/');
+        }else if (auth()->guard('employee')->check()) {
+            return redirect('/employee');
         }
+
+
+    
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check() and $guard != "") {
+        //         dd($guard);
+        //         return redirect($guards_routes[$guard]);
+        //     }
+        // }
+
 
         return $next($request);
     }
