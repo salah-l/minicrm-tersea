@@ -1,4 +1,3 @@
-Exemple d'email
 
 Bonjour {{$name}},
 
