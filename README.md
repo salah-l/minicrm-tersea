@@ -20,8 +20,8 @@ Minicrm utilise plusieurs projet open-source:
 Pour installer Minicrm:
 
 1. Cloner le repository: `https://github.com/salah-l/minicrm-tersea`
-2. Naviguer au dossier du projet: `cd minicrm-tersea`
-3. Executer: `composer install`
+2. Se rendre dans le dossier du projet : `cd minicrm-tersea`
+3. Exécuter : `composer install`
 4. Installer les modules npm: `npm install`
 5. Créer le fichier .env: `copy .env.example .env`
 6. Modifier DB_CONNECTION et MAIL_MAILER dans le fichier .env: 
@@ -31,16 +31,16 @@ DB_CONNECTION=sqlite
 .
 MAIL_MAILER=log
 ```
-7. Generer la clès de l'application: `php artisan key:generate`
-8. Créer les tables dans la database: `php artisan migrate` puis enter `yes`
-9. Génerer dummy data avec: `php artisan db:seed`
-10. Dans un nouveau terminal, lancer le serveur laravel: `php artisan serve`
+7. Générer la clé de l'application : `php artisan key:generate`
+8. Créer les tables dans la base de données: `php artisan migrate` puis appuyer sur Entrée et saisir `yes`
+9. Générer des données factices avec: `php artisan db:seed`
+10. Dans un nouveau terminal, lancer le serveur Laravel: `php artisan serve`
 11. Dans un autre terminal, lancer Vite: `npm run dev`
-12. Dans votre navigateur, naviguer au `http://localhost:8000`, et voila
+12. Dans votre navigateur, naviguer vers `http://localhost:8000`, et voila
 
 
-Pour vous connecter voici des logins predefinis:
-1.Pour administrateur
+Pour vous connecter, voici des identifiants prédéfinis :
+1.Pour Administrateur
 ```
 email: admin@minicrm.com
 Mot de passe: 123456789
@@ -62,11 +62,10 @@ email: nasser.r@company.com
 Mot de passe: 123456789
 ```
 
-Pour l'espace administrateur, quand vous envoyé une invitation a un employe l'email envoye sera delivre au `./storage/laravel.log`
+Pour l'espace administrateur, lorsque vous envoyez une invitation à un employé, l'e-mail envoyé sera livré à  `./storage/laravel.log`
 
 
 
-
-<img src="http://salah.louizy.com/images/louizy-logo.png" width="100"/>
+<img src="http://salah.louizy.com/images/louizy-logo.png" width="200"/>
 
 
