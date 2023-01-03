@@ -32,39 +32,41 @@ Route::post('/login', [LoginController::class, 'login']);
 //Admin
 Route::group(['middleware' => 'user.auth'], function () {
 
-Route::get('/', [UserController::class, 'index']);
-Route::get('/home', [UserController::class, 'home']);
-Route::get('/user', [UserController::class, 'viewCreateUserPage']);//Done
-Route::get('/users', [UserController::class, 'getAllUsers']);//Done
-Route::get('/user/{id}', [UserController::class, 'getUser']);//Done
-Route::post('/user', [UserController::class, 'createUser']);//Done
-Route::put('/user', [UserController::class, 'updateUser']);//Done
+Route::get('/', [UserController::class, 'index']);//index page for users
+Route::get('/home', [UserController::class, 'home']);//contains only the content-section of index page to be loaded with Ajax calls
+Route::get('/user/{id}', [UserController::class, 'getUser']);
+Route::put('/user', [UserController::class, 'updateUser']);
+Route::get('/user', [UserController::class, 'viewCreateUserPage']);
+Route::get('/users', [UserController::class, 'getAllUsers']);
+Route::post('/user', [UserController::class, 'createUser']);
 
 
-Route::get('/companies/{id}', [CompanyController::class, 'getCompany']); //Done 
-Route::get('/companies', [CompanyController::class, 'getAllCompanies']); //Done
-Route::get('/companiesList', [CompanyController::class, 'viewAllCompanies']); //Done
-Route::get('/company', [CompanyController::class, 'viewCreateCompanyPage']);//Done
-Route::post('/company', [CompanyController::class, 'createCompany']);//Done
-Route::put('/company', [CompanyController::class, 'updateCompany']);//Done
-Route::delete('/company/{id}', [CompanyController::class, 'deleteCompany']);//Done
 
-Route::get('/employees/{id}', [EmployeeController::class, 'getEmployee']);//Done
-Route::get('/employees', [EmployeeController::class, 'getAllEmployees']);//Done
-Route::get('/employeesList', [EmployeeController::class, 'viewAllEmployees']);//Done
-Route::put('/employees', [EmployeeController::class, 'updateEmployee']);//Done
-Route::delete('/employee/{id}', [EmployeeController::class, 'deleteEmployee']);//Done
+Route::get('/companies', [CompanyController::class, 'getAllCompanies']); 
+Route::get('/companies/{id}', [CompanyController::class, 'getCompany']); 
+Route::get('/companiesList', [CompanyController::class, 'viewAllCompanies']); 
+Route::get('/company', [CompanyController::class, 'viewCreateCompanyPage']);
+Route::post('/company', [CompanyController::class, 'createCompany']);
+Route::put('/company', [CompanyController::class, 'updateCompany']);
+Route::delete('/company/{id}', [CompanyController::class, 'deleteCompany']);
 
 
-Route::get('/invitations', [InvitationController::class, 'getAllInvitations']);//Done
-Route::get('/invitationsList', [InvitationController::class, 'viewAllInvitations']);//Done
-Route::put('/invitation/{id}', [InvitationController::class, 'cancelInvitation']);//Done
-Route::get('/invitation', [InvitationController::class, 'viewInvitationPage']);//Done
-Route::post('/invitation', [InvitationController::class, 'sendInvitation']);//Done
+Route::get('/employees/{id}', [EmployeeController::class, 'getEmployee']);
+Route::get('/employees', [EmployeeController::class, 'getAllEmployees']);
+Route::get('/employeesList', [EmployeeController::class, 'viewAllEmployees']);
+Route::put('/employees', [EmployeeController::class, 'updateEmployee']);
+Route::delete('/employee/{id}', [EmployeeController::class, 'deleteEmployee']);
 
 
-Route::get('/audit', [AuditController::class, 'auditPage']);//Done
-Route::post('/audit', [AuditController::class, 'audit']);//Done
+Route::get('/invitations', [InvitationController::class, 'getAllInvitations']);
+Route::get('/invitationsList', [InvitationController::class, 'viewAllInvitations']);
+Route::put('/invitation/{id}', [InvitationController::class, 'cancelInvitation']);
+Route::get('/invitation', [InvitationController::class, 'viewInvitationPage']);
+Route::post('/invitation', [InvitationController::class, 'sendInvitation']);
+
+
+Route::get('/audit', [AuditController::class, 'auditPage']);
+Route::post('/audit', [AuditController::class, 'audit']);
 
  
 });
@@ -81,10 +83,11 @@ Route::post('/audit', [AuditController::class, 'audit']);//Done
 
 Route::get('/employee/registration/{id}/{token}', [EmployeeController::class, 'confirmInvitationPage']);
 Route::put('/invitation/employee/{id}', [EmployeeController::class, 'updateInvitationStatus']);
-Route::get('/employee/password/{id}', [EmployeeController::class, 'updatePasswordPage']);//Done
-Route::put('/employee/password', [EmployeeController::class, 'updateEmployeePassword']);//Done
-Route::get('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetailsPage']);//Done
-Route::put('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetails']);//Done
+Route::get('/employee/password/{id}', [EmployeeController::class, 'updatePasswordPage']);
+Route::put('/employee/password', [EmployeeController::class, 'updateEmployeePassword']);
+Route::get('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetailsPage']);
+Route::put('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetails']);
+
 
 Route::group(['middleware' => 'employee.auth'], function () {
 
@@ -92,10 +95,11 @@ Route::group(['middleware' => 'employee.auth'], function () {
 Route::get('/employee', [EmployeeController::class, 'index']);
 Route::get('/employeeHome', [EmployeeController::class, 'home']);
 Route::get('/employee/{id}', [EmployeeController::class, 'getEmployeeAccount']);
-Route::put('/employee', [EmployeeController::class, 'updateEmployee']);//Done
-Route::get('/company/employee/{id}', [EmployeeController::class, 'viewEmployeeCompany']);//Done
+Route::put('/employee', [EmployeeController::class, 'updateEmployee']);
+Route::get('/company/employee/{id}', [EmployeeController::class, 'viewEmployeeCompany']);
 Route::get('/collegues/employee', [EmployeeController::class, 'getEmployeeColleguesView']);
 Route::get('/collegues/list/employee', [EmployeeController::class, 'getEmployeeCollegues']);
+
 
 });
 
