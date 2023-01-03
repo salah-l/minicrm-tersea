@@ -29,7 +29,7 @@ Route::post('/login', [LoginController::class, 'login']);
 });
 
 
-
+//Admin
 Route::group(['middleware' => 'user.auth'], function () {
 
 Route::get('/', [UserController::class, 'index']);
@@ -78,7 +78,6 @@ Route::post('/audit', [AuditController::class, 'audit']);//Done
 
 
 //Employee
-Route::group(['middleware' => 'employee.auth'], function () {
 
 Route::get('/employee/registration/{id}/{token}', [EmployeeController::class, 'confirmInvitationPage']);
 Route::put('/invitation/employee/{id}', [EmployeeController::class, 'updateInvitationStatus']);
@@ -86,6 +85,9 @@ Route::get('/employee/password/{id}', [EmployeeController::class, 'updatePasswor
 Route::put('/employee/password', [EmployeeController::class, 'updateEmployeePassword']);//Done
 Route::get('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetailsPage']);//Done
 Route::put('/employees/registration/details', [EmployeeController::class, 'setEmployeeDetails']);//Done
+
+Route::group(['middleware' => 'employee.auth'], function () {
+
 
 Route::get('/employee', [EmployeeController::class, 'index']);
 Route::get('/employeeHome', [EmployeeController::class, 'home']);
