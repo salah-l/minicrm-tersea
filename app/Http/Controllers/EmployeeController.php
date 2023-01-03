@@ -28,11 +28,11 @@ class EmployeeController extends Controller
         }
 
         $employee = Employee::find($id);
-        $company = Company::whereId($employee->company_id)->first();
+        $company = Company::find($employee->company_id);
 
         return view('employeeAccount', [
             'employee' => $employee,
-            'company' => ['name' => $company->value('name'), 'id' => $employee->company_id]
+            'company' => ['name' => $company->name, 'id' => $employee->company_id]
         ]);
 
 

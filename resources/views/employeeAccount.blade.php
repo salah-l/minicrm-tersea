@@ -27,7 +27,6 @@
                     <label for="company_id">Société</label>
                     <select id="select2" name="company_id" disabled>
                         <option value="{{$company['id']}}" selected>{{$company['name']}}</option>
-                        <option value="{{$company['id']}}">{{$company['name']}}</option>
                     </select>
                 </div>
 
