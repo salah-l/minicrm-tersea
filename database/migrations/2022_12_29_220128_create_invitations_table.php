@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('employee_id');
             $table->bigInteger('company_id');
-            $table->string('status')->default('sent');
+            $table->string('status')->default('Envoyée');
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users');

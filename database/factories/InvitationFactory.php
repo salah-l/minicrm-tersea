@@ -26,7 +26,7 @@ class InvitationFactory extends Factory
             'user_id' => \App\Models\User::all()->random()->id,
             'company_id' => $employee->company_id,
             'employee_id' => $employee->id, // password
-            'status' => 'accepted'
+            'status' => 'Acceptée'
         ];
     }
 }
