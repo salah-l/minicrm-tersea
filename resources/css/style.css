@@ -1,0 +1,183 @@
+body {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #39464e;
+}
+
+ul {
+    list-style-type: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(91, 91, 91);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+a{
+    cursor: pointer;
+}
+
+
+/*Alert message*/
+.close{
+    cursor: pointer;
+}
+
+
+/*main side bar*/
+.sb-main {
+    width: 250px;
+    background-color: #f0f2f4;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border: 1px solid #ddd;
+    /* padding: 5px 30px; */
+}
+
+.sidebar-logo {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.sb-menu li {
+
+    border-bottom: 1px solid rgb(187, 187, 187);
+    width: 100%;
+   text-align: center; 
+   line-height: 4;
+   cursor: pointer;
+}
+.sb-menu li:hover{
+    background: #39464e;
+    color:white;
+}
+
+.sb-menu:first-child {
+    margin-top: 15px;
+}
+
+/* content section */
+.content-section{
+    margin-left: 250px;
+}
+
+
+/*home section*/
+.greeting{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.actions-wrapper.row > *{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.actions{
+    display: flex;
+    gap: 20px;
+}
+.action-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f2f4;
+    width: 200px;
+    height: 80px;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px #cfcfcfc9, 0px 1px 1px #00000059; 
+    cursor: pointer;
+}
+
+.action-btn:hover{
+    background: #39464e;
+    color:white;
+}
+
+
+/* account section */
+input, select{
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ddd
+}
+
+
+
+/* Companies section */
+.companies-view.row > *{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+/* Employees section */
+.employees-view.row > *{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+/*Password update page*/
+.password-form{
+    background: #f0f2f4;
+    padding: 15px 40px;
+    width: 320px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px #cfcfcfc9, 0px 1px 1px #00000059; 
+}
+
+/*Invitation page*/
+.invitation-form{
+
+    background: #f0f2f4;
+    padding: 15px 40px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px #cfcfcfc9, 0px 1px 1px #00000059; 
+    text-align: center;
+
+}
+
+
+/*Set Employee Details page*/
+.employee-details-form{
+
+    background: #f0f2f4;
+    padding: 15px 40px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px #cfcfcfc9, 0px 1px 1px #00000059; 
+    width: 400px;
+
+}
+
+
+/*Error feedback*/
+.feedback{
+    color: rgb(226, 88, 88);
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
