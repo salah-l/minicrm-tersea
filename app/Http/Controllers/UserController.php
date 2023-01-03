@@ -95,7 +95,6 @@ class UserController extends Controller
             User::find($id)->update([
                 'name' => $request->name,
                 'email'=> $request->email,
-                'password' => \Hash::make($request->password),
                 'role' => $request->role
             ]);
 
