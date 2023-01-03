@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('invitations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('employee_id');
-            $table->bigInteger('company_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('company_id');
             $table->string('status')->default('Envoyée');
             $table->timestamps();
             
