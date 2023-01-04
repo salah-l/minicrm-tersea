@@ -36,10 +36,11 @@ MAIL_MAILER=log
 9. Générer des données factices avec: `php artisan db:seed`
 10. Dans un nouveau terminal, lancer le serveur Laravel: `php artisan serve`
 11. Dans un autre terminal, lancer Vite: `npm run dev`
-12. Dans votre navigateur, naviguer vers `http://localhost:8000`, et voila
+12. Dans votre navigateur, naviguer vers `http://localhost:8000`, et voila.
 
 
 Pour vous connecter, voici des identifiants prédéfinis :
+
 1.Pour Administrateur
 ```
 email: admin@minicrm.com
