@@ -35,6 +35,10 @@ class LoginController extends Controller
                 ]);
                 
                 return ['newLocation', '/'];
+            }else{
+                return response()->json([
+                    'message' => 'Invalid email or password', 'errors' => ['email' => ['Invalid email or password']]
+                ], 401);
             }
         }else{
 
@@ -51,6 +55,10 @@ class LoginController extends Controller
 
                 return ['newLocation', '/employee'];
                 
+            }else{
+                return response()->json([
+                    'message' => 'Invalid email or password', 'errors' => ['email' => ['Invalid email or password']]
+                ], 401);
             }
         }
 

@@ -329,7 +329,7 @@ $(document).ready(function () {
     $(document).on('submit', 'form', function(event){
             event.preventDefault();
             const formData = $('form').serializeArray();
-            console.log(formData);
+            // console.log(formData);
             const url = $('form').attr('action');
             const entity = $('form').data('entity');
             $.ajax({
@@ -349,6 +349,8 @@ $(document).ready(function () {
                 },
                 error: function (err) {
 
+                    console.log(err);
+
                     function delay(ms) {
                         return new Promise(resolve => setTimeout(resolve, ms));
                       }
@@ -365,7 +367,6 @@ $(document).ready(function () {
                             $(`#${key}-error`).html(value[0]);
                             $(`#${key}-error`).removeClass('invalid-feedback');
                             $(`#${key}-error`).addClass('feedback');
-                            $('#' + key).addClass('is-invalid');
 
                         });
 
