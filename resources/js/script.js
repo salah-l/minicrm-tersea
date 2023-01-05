@@ -1,45 +1,48 @@
 
-    function getSection(url){
-        $.ajax({
-            type: "GET",
-            url: url,
-            success: function (data) {
-                $(".content-section").html(data);
-                $('#select2').select2({
-                    dropdownPosition: 'below'
-                });
-            },
-        });
-    }
+function getSection(url){
+    $.ajax({
+        type: "GET",
+        url: url,
+        success: function (data) {
+            $(".content-section").html(data);
+            $('#select2').select2({
+                dropdownPosition: 'below'
+            });
+        },
+    });
+}
 
-    function doAction(url, method, entity){
-        $.ajax({
-            type: method,
-            url: url,
-            success : function(data){
+function doAction(url, method, entity){
+    $.ajax({
+        type: method,
+        url: url,
+        success : function(data){
 
-            $(`.${entity}-message-alert`).html(data);
-            $(`#${entity}-table`).DataTable().ajax.reload();
+        $(`.${entity}-message-alert`).html(data);
+        $(`#${entity}-table`).DataTable().ajax.reload();
 
-   
-            }
-        });
-    }
 
-    function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
-      }
+        }
+    });
+}
 
-    function formatDate(date) {
-        return [
-          padTo2Digits(date.getDate()),
-          padTo2Digits(date.getMonth() + 1),
-          date.getFullYear(),
-        ].join('-') +" - "+ [
-            padTo2Digits(date.getHours()),
-            padTo2Digits(date.getMinutes())
-          ].join(':');
-      }
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+    
+function formatDate(date) {
+    return [
+        padTo2Digits(date.getDate()),
+        padTo2Digits(date.getMonth() + 1),
+        date.getFullYear(),
+    ].join('-') +" - "+ [
+        padTo2Digits(date.getHours()),
+        padTo2Digits(date.getMinutes())
+        ].join(':');
+}
+
+
 
 $(document).ready(function () {
     
@@ -227,12 +230,10 @@ $(document).ready(function () {
 
     //Employees Page
     $("#employee_collegues").on("click", function () {
-        console.log('ok');
         $.ajax({
             type: "GET",
             url: "/collegues/employee",
             success: function (data) {
-                console.log('okok');
                 $(".content-section").html(data);
                 $('#collegues-table').DataTable({
                     "ajax": {
@@ -249,9 +250,6 @@ $(document).ready(function () {
                        ]
                 });
             },
-            error: function(err){
-                console.log(err);
-            }
             
         });
     });
@@ -316,6 +314,7 @@ $(document).ready(function () {
         $(this).closest('.alert').remove();
     });
 
+    //To Logout
     $(document).on('click', '.logout', function(){
         $.ajax({
             type: "POST",
@@ -326,10 +325,11 @@ $(document).ready(function () {
         });
     });
 
+
+    //Handles all the form submissions in the app
     $(document).on('submit', 'form', function(event){
             event.preventDefault();
             const formData = $('form').serializeArray();
-            // console.log(formData);
             const url = $('form').attr('action');
             const entity = $('form').data('entity');
             $.ajax({
@@ -349,7 +349,6 @@ $(document).ready(function () {
                 },
                 error: function (err) {
 
-                    console.log(err);
 
                     function delay(ms) {
                         return new Promise(resolve => setTimeout(resolve, ms));
