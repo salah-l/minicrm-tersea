@@ -1,46 +1,5 @@
-
-function getSection(url){
-    $.ajax({
-        type: "GET",
-        url: url,
-        success: function (data) {
-            $(".content-section").html(data);
-            $('#select2').select2({
-                dropdownPosition: 'below'
-            });
-        },
-    });
-}
-
-function doAction(url, method, entity){
-    $.ajax({
-        type: method,
-        url: url,
-        success : function(data){
-
-        $(`.${entity}-message-alert`).html(data);
-        $(`#${entity}-table`).DataTable().ajax.reload();
-
-
-        }
-    });
-}
-
-function padTo2Digits(num) {
-    return num.toString().padStart(2, '0');
-}
-
-    
-function formatDate(date) {
-    return [
-        padTo2Digits(date.getDate()),
-        padTo2Digits(date.getMonth() + 1),
-        date.getFullYear(),
-    ].join('-') +" - "+ [
-        padTo2Digits(date.getHours()),
-        padTo2Digits(date.getMinutes())
-        ].join(':');
-}
+import * as customFunctions from './functions.js';
+import './formSubmitEvent.js';
 
 
 
@@ -64,6 +23,7 @@ $(document).ready(function () {
         });
     });
 
+
     //Account Page
     $("#account").on("click", function () {
 
@@ -76,6 +36,7 @@ $(document).ready(function () {
             },
         });
     });
+
 
     //Companies Page
     $("#companies").on("click", function () {
@@ -179,7 +140,7 @@ $(document).ready(function () {
                         type: "POST"
                     },
                     "columns": [
-                        { data: null, render: data => `<strong>${formatDate(new Date(data.created_at))}:</strong> ${data.event}` },
+                        { data: null, render: data => `<strong>${customFunctions.formatDate(new Date(data.created_at))}:</strong> ${data.event}` },
                         ]
                 });
             },
@@ -199,6 +160,8 @@ $(document).ready(function () {
         });
     });
 
+
+
     //Account Page
     $("#employee_account").on("click", function () {
 
@@ -210,6 +173,8 @@ $(document).ready(function () {
             },
         });
     });
+
+
 
     //Companies Page
     $("#employee_company").on("click", function () {
@@ -298,7 +263,7 @@ $(document).ready(function () {
     //To execute link from table with class link
     $(document).on('click', '.link', function(){
         const url = $(this).data('url');
-        getSection(url);
+        customFunctions.getSection(url);
     });
 
     //To execute action from table with class link
@@ -306,7 +271,7 @@ $(document).ready(function () {
         const method = $(this).data('method');
         const url = $(this).data('url');
         const entity = $(this).data('entity');
-        doAction(url, method, entity);
+        customFunctions.doAction(url, method, entity);
     });
 
     //To close alert message
@@ -326,56 +291,7 @@ $(document).ready(function () {
     });
 
 
-    //Handles all the form submissions in the app
-    $(document).on('submit', 'form', function(event){
-            event.preventDefault();
-            const formData = $('form').serializeArray();
-            const url = $('form').attr('action');
-            const entity = $('form').data('entity');
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: formData,
-                success : function(data){
-                    if(entity){
-                        $(`.${entity}-message-alert`).html(data);
-                    }
 
-                    //invitation process
-                    if(data[0] == 'newLocation'){
-                        window.location.href = data[1];
-                    }
-                    
-                },
-                error: function (err) {
-
-
-                    function delay(ms) {
-                        return new Promise(resolve => setTimeout(resolve, ms));
-                      }
-                      
-                      $("span[id$='-error']").addClass('invalid-feedback');
-
-                      delay(500).then(function(){
-                        var errors = err.responseJSON.errors;
-                        //hide all error messages
-
-                        // Display the errors in the form.
-                        $.each(errors, function (key, value) {
-
-                            $(`#${key}-error`).html(value[0]);
-                            $(`#${key}-error`).removeClass('invalid-feedback');
-                            $(`#${key}-error`).addClass('feedback');
-
-                        });
-
-                      });
-
-                    
-                }
-            });
-            
-    });
 
 
 
